@@ -7,21 +7,9 @@ import java.util.LinkedList;
 import Modelo.Cliente;
 import Modelo.Usuario;
 public class Controle {
-        private final LinkedList<Usuario> usuarios = new LinkedList();
-        public void addUsuario(int id, int idade, String nome, int d, int m, int a){
-            usuarios.add(new Usuario(usuarios.size()+1, idade, nome, d, m, a));
-        }
-        public void addCliente(Usuario usuario, int idade, String nome, int d, int m, int a){
-            usuario.addCliente(idade, nome, d, m, a);
-        }
-        public void removeCliente(Usuario usuario, int id){
-            usuario.removeCliente(id);
-        }
-        public void buscarClientePorId(Usuario usuario, int id){
-            usuario.buscarClientePorId(id);
-        }
-        public void buscarClientePorNome(Usuario usuario, String nome){
-            usuario.buscarClientePorNome(nome);
+        private LinkedList<Usuario> usuarios = new LinkedList();
+        public void addUsuario(int idade, String nome, int d, int m, int a){
+            usuarios.add(new Usuario(usuarios.size(), idade, nome, d, m, a));
         }
         public void removeUsuario(int id){
             for(int i=0; i<usuarios.size(); i++){
@@ -42,5 +30,20 @@ public class Controle {
                     return usuarios.get(i);
             }
             return null;
+        }
+        public LinkedList getUsuarios(){
+            return this.usuarios;
+        }
+        public void addCliente(Usuario usuario, int idade, String nome, int d, int m, int a){
+            usuario.addCliente(idade, nome, d, m, a);
+        }
+        public void removeCliente(Usuario usuario, int id){
+            usuario.removeCliente(id);
+        }
+        public Cliente buscarClientePorId(Usuario usuario, int id){
+            return usuario.buscarClientePorId(id);
+        }
+        public Cliente buscarClientePorNome(Usuario usuario, String nome){
+            return usuario.buscarClientePorNome(nome);
         }
 }

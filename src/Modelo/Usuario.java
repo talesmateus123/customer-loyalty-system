@@ -10,16 +10,17 @@ public class Usuario {
     private String nome;
     private final Data dtNasc;
     LinkedList<Cliente> clientes;
-    
+    LinkedList<Produto> estoque;
     public Usuario(int id, int idade, String nome, int d, int m, int a) {
         this.clientes = new LinkedList();
         this.id = id;
         this.idade = idade;        
         this.nome = nome;
         this.dtNasc = new Data(d, m, a);
+        this.estoque = new LinkedList();
     }
     public void addCliente(int idade, String nome, int d, int m, int a){
-        this.clientes.add(new Cliente(clientes.size()+1, idade, nome, d, m, a));
+        this.clientes.add(new Cliente(clientes.size(), idade, nome, d, m, a));
     }
     public void removeCliente(int id){
         for(int i=0; i<clientes.size(); i++){
@@ -41,6 +42,9 @@ public class Usuario {
         }
         return null;
     }
+    public LinkedList getProdutosEmEstoque(){
+        return this.estoque;
+    }
     public int getId() {
         return id;
     }
@@ -53,6 +57,12 @@ public class Usuario {
     public Data getDtNasc() {
         return dtNasc;
     }
+    public LinkedList getClientes(){
+        return this.clientes;
+    }
+    public Cliente getCliente(int id){
+        return this.clientes.get(id);
+    }
     public void setIdade(int idade) {
         this.idade = idade;
     }
@@ -62,12 +72,9 @@ public class Usuario {
     public void setDtNasc(int d, int m, int a) {
         this.dtNasc.setData(d, m, a);
     }
-    public void addCliente(Cliente cliente){
-        clientes.add(cliente);
+    public void addEstoque(Produto produto){
+        this.estoque.add(produto);
     }
-    public void subCliente(Cliente cliente){
-        clientes.remove(cliente);
-    }    
     public String toString() {
         return "Usuário id: " + id + "\nNome: " + nome + "\nIdade: "  + idade +"\nData de nascimento: " + dtNasc.toString() + "\nClientes cadastrados: " + clientes.size() + '.';
     }

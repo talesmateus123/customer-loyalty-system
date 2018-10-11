@@ -33,7 +33,7 @@ public class Produto {
     public String getTipo() {
         return tipo;
     }
-    public Data getData() {
+    public Data getDataValidade() {
         return dataValidade;
     }
     public void setPreco(float preco) {
