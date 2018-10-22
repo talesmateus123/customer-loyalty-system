@@ -5,11 +5,11 @@
 package Modelo;
 public class Venda {
     private int id;
-    private Usuario vendedor;
+    private Vendedor vendedor;
     private Cliente cliente;
     private Produto produto;
     private Data dataVenda;
-    public Venda(Usuario usuario, Cliente cliente, Produto produto, int d, int m, int a){
+    public Venda(Vendedor usuario, Cliente cliente, Produto produto, int d, int m, int a){
         this.vendedor = usuario;
         this.cliente = cliente;
         this.produto = produto;
@@ -18,7 +18,7 @@ public class Venda {
     public int getId(){
         return id;
     }
-    public Usuario getVendedor() {
+    public Vendedor getVendedor() {
         return vendedor;
     }
     public Cliente getCliente() {
@@ -33,7 +33,7 @@ public class Venda {
     public void setId(int id){
         this.id = id;
     }
-    public void setVendedor(Usuario vendedor) {
+    public void setVendedor(Vendedor vendedor) {
         this.vendedor = vendedor;
     }
     public void setCliente(Cliente cliente) {

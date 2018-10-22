@@ -5,11 +5,11 @@
 package InterfaceGrafica;
 import Controlador.Controle;
 import Modelo.Cliente;
-import Modelo.Usuario;
+import Modelo.Vendedor;
 public class FormNovoCliente extends javax.swing.JDialog {
-    public FormNovoCliente(java.awt.Frame parent, boolean modal, Controle controle, Usuario usuario) {
+    public FormNovoCliente(java.awt.Frame parent, boolean modal, Controle controle, Vendedor vendedor) {
         super(parent, modal);
-        this.usuario = usuario;
+        this.vendedor = vendedor;
         this.controle = controle;
         initComponents();
     }
@@ -194,7 +194,7 @@ public class FormNovoCliente extends javax.swing.JDialog {
     }
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
         if( jTxtFSenha.getText() != null && jTxtFLogin.getText() != null && jTxtFNome.getText() != null && jTxtFIdade.getText() != null && jTxtFDia.getText() != null && jTxtFMes.getText() != null && jTxtFAno.getText() != null){            
-            controle.getUsuario(this.usuario.getId()).addCliente(cliente);            
+            controle.getVendedor(this.vendedor.getId()).addCliente(cliente);            
             dispose();               
         }
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
@@ -232,7 +232,7 @@ public class FormNovoCliente extends javax.swing.JDialog {
     }//GEN-LAST:event_jTxtFSenhaActionPerformed
  
     private Cliente cliente;
-    private Usuario usuario;
+    private Vendedor vendedor;
     private Controle controle;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtnCancelar;

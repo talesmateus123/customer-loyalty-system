@@ -123,7 +123,7 @@ public class Data {
         }
     }
 
-    public int getData() {
+    public int getDia() {
         return dia;
     }
     public int getMes() {

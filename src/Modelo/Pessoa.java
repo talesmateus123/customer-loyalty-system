@@ -5,13 +5,11 @@
 package Modelo;
 public class Pessoa {
     protected int id;
-    protected int idade;
     protected String nome;
     protected Data dtNasc;
     protected String login;
     protected String senha;
-    public Pessoa(String login, String senha, int idade, String nome, int d, int m, int a) {
-        this.idade = idade;
+    public Pessoa(String login, String senha, String nome, int d, int m, int a) {
         this.nome = nome;
         this.dtNasc = new Data(d, m, a);
         this.login = login;
@@ -19,9 +17,6 @@ public class Pessoa {
     }
     public int getId() {
         return id;
-    }
-    public int getIdade() {
-        return idade;
     }
     public String getNome() {
         return nome;
@@ -37,9 +32,6 @@ public class Pessoa {
     }
     public void setId(int id){
         this.id = id;
-    }
-    public void setIdade(int idade) {
-        this.idade = idade;
     }
     public void setNome(String nome) {
         this.nome = nome;

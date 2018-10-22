@@ -4,7 +4,7 @@
  */
 package InterfaceGrafica;
 import Controlador.Controle;
-import Modelo.Usuario;
+import Modelo.Vendedor;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 
@@ -13,8 +13,6 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         initComponents();
         this.setTitle("Sistema de fidelidade de clientes");
         controle = new Controle();
-        controle.novoUsuario(new Usuario("usuario", "usuario", 19, "Tales Mateus de Oliveira", 14, 06, 1999));
-        
     }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -99,8 +97,13 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginUsuarioActionPerformed
+        try{
         formLogin = new FormLogin(this, true, controle);
-        interfacePrincipalUsuario = new InterfacePrincipalUsuario(controle, formLogin.getUsuario());
+        interfacePrincipalUsuario = new InterfacePrincipalUsuario(controle, formLogin.getVendedor());
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }
     }//GEN-LAST:event_loginUsuarioActionPerformed
     private void loginClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginClienteActionPerformed
         formLogin = new FormLogin(this, true, controle);

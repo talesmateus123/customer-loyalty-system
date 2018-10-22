@@ -4,11 +4,11 @@
  */
 package Modelo;
 import java.util.LinkedList;
-public class Usuario extends Pessoa {
+public class Vendedor extends Pessoa {
     private LinkedList<Cliente> clientes;
     private LinkedList<Produto> estoque;
-    public Usuario(String login, String senha, int idade, String nome, int d, int m, int a) {
-        super(login, senha, idade, nome, d, m, a);
+    public Vendedor(String login, String senha, String nome, int d, int m, int a) {
+        super(login, senha, nome, d, m, a);
         this.clientes = new LinkedList();
         this.estoque = new LinkedList();
     }
@@ -39,10 +39,10 @@ public class Usuario extends Pessoa {
         }
         return null;
     }
-    public LinkedList getProdutosEmEstoque(){
+    public LinkedList<Produto> getProdutosEmEstoque(){
         return this.estoque;
     }
-    public LinkedList getClientes(){
+    public LinkedList<Cliente>getClientes(){
         return this.clientes;
     }
     public Cliente getCliente(int id){
@@ -52,6 +52,6 @@ public class Usuario extends Pessoa {
         this.estoque.add(produto);
     }
     public String toString() {
-        return "Usuário id: " + this.id + "\nNome: " + this.nome + "\nIdade: "  + this.idade +"\nData de nascimento: " + this.dtNasc.toString() + "\nClientes cadastrados: " + this.clientes.size() + '.';
+        return "Usuário id: " + this.id + "\nNome: " + this.nome + "\nData de nascimento: " + this.dtNasc.toString() + "\nClientes cadastrados: " + this.clientes.size() + '.';
     }
 }

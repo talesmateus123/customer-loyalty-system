@@ -4,9 +4,9 @@
  */
 package InterfaceGrafica;
 import Controlador.Controle;
-import Modelo.Administrador;
+import Modelo.Admin;
 import Modelo.Cliente;
-import Modelo.Usuario;
+import Modelo.Vendedor;
 public class FormLogin extends javax.swing.JDialog {
     public FormLogin(java.awt.Frame parent, boolean modal, Controle controle) {
         super(parent, modal);
@@ -14,13 +14,13 @@ public class FormLogin extends javax.swing.JDialog {
         this.controle = controle;
         this.setVisible(true);    
     }
-    public Usuario getUsuario(){
-        return this.usuario;
+    public Vendedor getVendedor(){
+        return this.vendedor;
     }
     public Cliente getCliente(){
         return this.cliente;
     }
-    public Administrador getAdmin(){
+    public Admin getAdmin(){
         return this.admin;
     }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -145,11 +145,11 @@ public class FormLogin extends javax.swing.JDialog {
 
     private void jBtnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnLoginActionPerformed
         if( jTxtFSenha.getText() != null && jTxtFLogin.getText() != null){
-            if(controle.buscarUsuario(jTxtFLogin.getText()) != null){
-                for(int i=0; i<controle.getUsuarios().size(); i++){
-                    if (jTxtFSenha.getText().equals(controle.buscarUsuario(jTxtFLogin.getText()).getLogin())){
-                        this.usuario = controle.buscarUsuario(jTxtFLogin.getText());
-                        interfacePrincipalUsuario = new InterfacePrincipalUsuario(controle, this.usuario);
+            if(controle.getVendedor(jTxtFLogin.getText()) != null){
+                for(int i=0; i<controle.getVendedores().size(); i++){
+                    if (jTxtFSenha.getText().equals(controle.getVendedor(jTxtFLogin.getText()).getLogin())){
+                        this.vendedor = controle.getVendedor(jTxtFLogin.getText());
+                        interfacePrincipalUsuario = new InterfacePrincipalUsuario(controle, this.vendedor);
                         dispose();
                     }
                 }
@@ -162,9 +162,9 @@ public class FormLogin extends javax.swing.JDialog {
     }//GEN-LAST:event_jTxtFLoginActionPerformed
     
     private Controle controle;
-    private Usuario usuario;
+    private Vendedor vendedor;
     private Cliente cliente;
-    private Administrador admin;
+    private Admin admin;
     private InterfacePrincipalUsuario interfacePrincipalUsuario;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtnCancelar;

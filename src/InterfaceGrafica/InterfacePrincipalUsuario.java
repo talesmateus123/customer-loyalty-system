@@ -4,13 +4,13 @@
  */
 package InterfaceGrafica;
 import Controlador.Controle;
-import Modelo.Usuario;
+import Modelo.Vendedor;
 public class InterfacePrincipalUsuario extends javax.swing.JFrame {
-    public InterfacePrincipalUsuario(Controle controle, Usuario usuario) {
+    public InterfacePrincipalUsuario(Controle controle, Vendedor vendedor) {
         initComponents();
         this.controle = controle;
-        this.usuario = usuario;
-        this.setTitle(this.usuario.getNome());
+        this.vendedor = vendedor;
+        this.setTitle(this.vendedor.getNome());
         this.setVisible(true);    
     }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -96,7 +96,7 @@ public class InterfacePrincipalUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void novoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_novoClienteActionPerformed
-        formNovoCliente = new FormNovoCliente(this, true, this.controle, this.usuario);
+        formNovoCliente = new FormNovoCliente(this, true, this.controle, this.vendedor);
     }//GEN-LAST:event_novoClienteActionPerformed
     private void listarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarClientesActionPerformed
         
@@ -106,7 +106,7 @@ public class InterfacePrincipalUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_listarProdutosActionPerformed
    
     private Controle controle;
-    private Usuario usuario;
+    private Vendedor vendedor;
     private FormNovoCliente formNovoCliente;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;

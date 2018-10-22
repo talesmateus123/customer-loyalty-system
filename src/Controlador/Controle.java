@@ -3,68 +3,86 @@
     TURMA: 1224
  */
 package Controlador;
-import Modelo.Administrador;
+import Modelo.Admin;
 import java.util.LinkedList;
 import Modelo.Cliente;
-import Modelo.Usuario;
+import Modelo.Vendedor;
 import Modelo.Venda;
 import Modelo.Produto;
 public class Controle {
-        private Administrador admin;
-        private LinkedList<Usuario> usuarios;
+        private Admin admin;
+        private LinkedList<Vendedor> vendedores;
         private LinkedList<Cliente> clientes;
         private LinkedList<Venda> vendas;
-        private LinkedList<Produto> produtos;
         private LinkedList<Produto> catalago;
         public Controle(){
-            admin = new Administrador("admin", "admin", 19, "Tales Mateus de Oliveira", 14, 06, 1999);
-            this.usuarios = new LinkedList();
-            this.vendas = new LinkedList();
-            this.produtos = new LinkedList();
+            admin = new Admin("talesmateus123", "21142307", "Tales Mateus de Oliveira Ferreira", 14, 06, 1999);
+            vendedores = new LinkedList();
+            vendas = new LinkedList();
         }
-        public void novoUsuario(Usuario usuario){
-            usuarios.add(usuario);
-            usuarios.getLast().setId(usuarios.indexOf(usuarios.getLast()));
+       // VENDEDORES
+        public void novoVendedor(Vendedor vendedor){
+            vendedores.add(vendedor);
+            vendedores.getLast().setId(vendedores.indexOf(vendedores.getLast()));
+        }        
+        public  Vendedor getVendedor(int id){
+            return vendedores.get(id);
         }
-        public boolean removerUsuario(int id){
-            for(int i=0; i<usuarios.size(); i++){
-                if (id == usuarios.get(i).getId()){
-                    usuarios.remove(usuarios.get(i));
+        public Vendedor getVendedor(String login){
+            for(int i=0; i<vendedores.size(); i++){
+                if (login.equals(vendedores.get(i).getLogin()))
+                    return vendedores.get(i);
+            }
+            return null;
+        }
+        public LinkedList<Vendedor> getVendedores(){
+            return vendedores;
+        }
+        public boolean removerVendedor(int id){
+            for(int i=0; i<vendedores.size(); i++){
+                if (id == vendedores.get(i).getId()){
+                    vendedores.remove(vendedores.get(i));
                     return true;
                 }
             }
             return false;
+        }        
+        // CLIENTES
+        public void novoCliente(Vendedor vendedor, Cliente cliente){
+            vendedor.addCliente(cliente);
+            clientes.add(cliente);
+        }        
+        public LinkedList<Cliente> getClientes(){
+            return clientes;
         }
-        public Usuario buscarUsuario(String login){
-            for(int i=0; i<usuarios.size(); i++){
-                if (login.equals(usuarios.get(i).getLogin()))
-                    return usuarios.get(i);
+        public static Cliente getCliente(Vendedor vendedor, int id){
+            return vendedor.buscarClientePorId(id);
+        }
+        public Cliente getCliente(Vendedor vendedor, String nome){
+            return vendedor.buscarClientePorNome(nome);
+        }
+        public Cliente getCliente(String nome){
+            for (int i=0; i< clientes.size(); i++){
+                if(nome.equals(clientes.get(i).getNome()))
+                    return clientes.get(i);
             }
             return null;
         }
-        public LinkedList getUsuarios(){
-            return this.usuarios;
-        }
-        public Usuario getUsuario(int id){
-            if (this.usuarios.get(id).equals(null))
-                return null;
-            return this.usuarios.get(id);
-        }
-        public void novoCliente(Usuario usuario, Cliente cliente){
-            usuario.addCliente(cliente);
-            clientes.add(cliente);
-        }
-        public boolean excluirCliente(Usuario usuario, int id){
+        public boolean excluirCliente(Vendedor vendedor, int id){
             clientes.remove(id);
-            return usuario.removerCliente(id);
+            return vendedor.removerCliente(id);
         }
-        public Cliente buscarClientePorId(Usuario usuario, int id){
-            return usuario.buscarClientePorId(id);
-        }
-        public void novaVenda(Usuario usuario, Cliente cliente, Produto produto, int d, int m, int a){
-            vendas.add(new Venda(usuario, cliente, produto, d, m, a));
+        // VENDAS
+        public void novaVenda(Vendedor vendedor, Cliente cliente, Produto produto, int d, int m, int a){
+            vendas.add(new Venda(vendedor, cliente, produto, d, m, a));
             vendas.getLast().setId(vendas.indexOf(vendas.getLast()));
         }
+        public LinkedList<Venda> getVendas(){
+            return vendas;
+        }
+        public Venda getVenda(int id){
+                return vendas.get(id);
+        }        
         public boolean excluirVenda(int id){
             if(vendas.get(id) == null)
                 return false;
@@ -74,22 +92,39 @@ public class Controle {
         public Venda buscarVendaPorId(int id){
              for(int i=0; i<vendas.size(); i++){
                 if (id == vendas.get(i).getId())
-                    return this.vendas.get(i);
+                    return vendas.get(i);
             }
             return null;
-        }
-        
-        
-        public void addCatalago(Produto produto) {
-            this.catalago.add(produto);
+        }        
+        // CATALAGO
+        public  void addCatalago(Produto produto) {
+            catalago.add(produto);
         }
         public boolean removeCatalago(int id) {
             for(int i=0; i<catalago.size(); i++){
                     if (id == catalago.get(i).getId()){
-                        this.catalago.remove(catalago.get(i));
+                        catalago.remove(catalago.get(i));
                         return true;
                     }
             }
             return false;
-        }    
+        }
+        public LinkedList<Produto> getCatalago(){
+            return catalago;
+        }
+        public Produto getItemCatalago(int id){
+            for(int i = 0; i < catalago.size(); i++){
+                if (id == catalago.get(id).getId())
+                    return catalago.get(id);
+            }
+            return null;
+        }
+        public Produto getItemCatalago(String nome){
+            for(int i = 0; i < catalago.size(); i++){
+                if (nome.equals(catalago.get(i).getNome()))
+                    return catalago.get(i);
+            }
+            return null;
+        }
+        
 }

@@ -3,7 +3,7 @@
     TURMA: 1224
  */
 package InterfaceGrafica;
-import Modelo.Usuario;
+import Modelo.Vendedor;
 public class FormNovoUsuario extends javax.swing.JDialog {
     public FormNovoUsuario(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -11,8 +11,8 @@ public class FormNovoUsuario extends javax.swing.JDialog {
          this.setTitle("Cadastrar usuário");
         setVisible(true);        
     }
-    public Usuario getUsuario(){
-        return this.usuario;
+    public Vendedor getVendedor(){
+        return this.vendedor;
     }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -225,9 +225,9 @@ public class FormNovoUsuario extends javax.swing.JDialog {
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
         if( jTxtFSenha.getText() != null && jTxtFLogin.getText() != null && jTxtFAno.getText() != null && jTxtFDia.getText() != null && jTxtFIdade.getText() != null && jTxtFMes.getText() != null && jTxtFNome.getText() != null )
-            this.usuario = new Usuario(jTxtFLogin.getText(), jTxtFSenha.getText(), Integer.parseInt(jTxtFIdade.getText()), jTxtFNome.getText(), Integer.parseInt(jTxtFDia.getText()), Integer.parseInt(jTxtFMes.getText()), Integer.parseInt(jTxtFAno.getText()));
+            this.vendedor = new Vendedor(jTxtFLogin.getText(), jTxtFSenha.getText(),  jTxtFNome.getText(), Integer.parseInt(jTxtFDia.getText()), Integer.parseInt(jTxtFMes.getText()), Integer.parseInt(jTxtFAno.getText()));
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
-    private Usuario usuario;
+    private Vendedor vendedor;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtnCancelar;
     private javax.swing.JButton jBtnConfirmar;
