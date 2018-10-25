@@ -4,11 +4,9 @@
  */
 package Controlador;
 import Modelo.Admin;
+import DAO.*;
 import java.util.LinkedList;
-import Modelo.Cliente;
-import Modelo.Vendedor;
-import Modelo.Venda;
-import Modelo.Produto;
+import Modelo.*;
 public class Controle {
         private Admin admin;
         private LinkedList<Vendedor> vendedores;

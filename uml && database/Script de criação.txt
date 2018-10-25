@@ -1,0 +1,87 @@
+CREATE TABLE Admin (
+  id INTEGER AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(50),
+  dtNasc DATE,
+  login VARCHAR(50),
+  senha VARCHAR(50)
+);
+
+CREATE TABLE Vendedor (
+  id INTEGER AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(50),
+  dtNasc DATE,
+  login VARCHAR(50),
+  senha VARCHAR(50)
+);
+
+CREATE TABLE Cliente (
+  id INTEGER AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(50),
+  dtNasc DATE,
+  login VARCHAR(50),
+  senha VARCHAR(50),
+  pontos INTEGER
+);
+
+CREATE TABLE ClienteCadastrado (
+  id INTEGER AUTO_INCREMENT PRIMARY KEY,
+  Cliente_id INTEGER,
+  Vendedor_id INTEGER,
+  FOREIGN KEY(Cliente_id)REFERENCES Cliente(id),
+  FOREIGN KEY(Vendedor_id)REFERENCES Vendedor(id)
+);
+
+CREATE TABLE Produto (
+  id INTEGER PRIMARY KEY,
+  preco FLOAT,
+  nome VARCHAR(50),
+  descricao VARCHAR(200),
+  tipo VARCHAR(50),
+  aroma VARCHAR(50),
+  dataValidade DATE
+);
+
+CREATE TABLE Estoque (
+  id INTEGER AUTO_INCREMENT PRIMARY KEY,
+  Vendedor_id INTEGER,
+  FOREIGN KEY(Vendedor_id) REFERENCES Vendedor(id)
+);
+
+CREATE TABLE ProdutoEmEstoque (
+  id INTEGER PRIMARY KEY,
+  Produto_id INTEGER,	
+  Estoque_id INTEGER,
+  FOREIGN KEY(Estoque_id) REFERENCES Estoque(id),
+  FOREIGN KEY(Produto_id) REFERENCES Produto(id)
+);
+
+CREATE TABLE Compras (
+  id INTEGER AUTO_INCREMENT PRIMARY KEY,
+  Cliente_id INTEGER,
+  FOREIGN KEY(Cliente_id) REFERENCES Cliente(id)
+);
+
+CREATE TABLE ProdutoComprado(
+  id INTEGER AUTO_INCREMENT PRIMARY KEY,
+  Produto_id INTEGER,
+  Compras_id INTEGER,
+  FOREIGN KEY(Produto_id) REFERENCES Produto(id),
+  FOREIGN KEY(Compras_id) REFERENCES Compras(id)
+);
+
+CREATE TABLE Venda (
+  id INTEGER AUTO_INCREMENT PRIMARY KEY,
+  DataVenda DATE,
+  Vendedor_id INTEGER,
+  Cliente_id INTEGER,
+  FOREIGN KEY(Cliente_id) REFERENCES Cliente(id),
+  FOREIGN KEY(Vendedor_id) REFERENCES Vendedor(id)
+);
+
+CREATE TABLE ProdutoVendido(
+  id INTEGER AUTO_INCREMENT PRIMARY KEY,
+  Produto_id INTEGER,
+  Venda_id INTEGER,
+  FOREIGN KEY(Produto_id) REFERENCES Produto(id),
+  FOREIGN KEY(Venda_id) REFERENCES Venda(id)
+);

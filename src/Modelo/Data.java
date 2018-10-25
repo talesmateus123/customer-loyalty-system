@@ -133,10 +133,27 @@ public class Data {
         return ano;
     }
     
+    public String completarComZero(String valor) {
+            String resultado = valor;
+            resultado = '0' + resultado;
+            return resultado;
+    }
+//completeToLeft("12938", '0', 15);
+    
     public String toString() {
         if (this.validaData != null)
             return this.validaData;
-        else
-            return this.dia+ "/" +this.mes+ "/" +this.ano;
+        else{
+            String dia = Integer.toString(this.dia);
+            String mes = Integer.toString(this.mes);
+            String ano = Integer.toString(this.ano);
+            
+            if (dia.length()<2)
+                dia = completarComZero(dia);
+            if (mes.length()<2)
+                mes = completarComZero(mes);
+        
+            return ano+ "-" +mes+ "-" +dia;
+        }
     }
 }

@@ -1,0 +1,24 @@
+use sistema_de_vendas;
+
+INSERT INTO Admin(login, nome, senha, dtNasc) 
+VALUES('talesmateus-admin', 'Tales Mateus de Oliveira', '21142307', '1999-06-14');
+----------------------------------------------------------------------------------
+INSERT INTO Vendedor(login, senha, nome, dtNasc)
+VALUES('rafabraga1998', 'rafinha123', 'Rafael Braga', '1998-08-16'),
+('talesmateus123', 'tales123', 'Tales Mateus', '1996-06-14'),
+('patricksam', 'samPatrick', 'Samuel Patrick', '1988-02-26');
+----------------------------------------------------------------------------------
+INSERT INTO Cliente(login, senha, nome, pontos)
+VALUES('solange1971', '7119Solange', 'Solange Melo dos Santos', 0);
+----------------------------------------------------------------------------------
+INSERT INTO ClienteCadastrado(Cliente_id, Vendedor_id)
+VALUES(0);
+----------------------------------------------------------------------------------
+INSERT INTO Produto(nome, tipo, descricao, preco, dataValidade)
+VALUES('Traduções Gold 5', 'Floral Aldeídico', 'Aroma moderado', 150, '2020-06-10'),
+('Traduções Gold 8', 'Floral Aldeídico', 'Aroma moderado', 145, '2020-06-10'),
+('Traduções Gold 9', 'Oriental Floral', 'Aroma intenso', 126.9, '2019-06-08');
+----------------------------------------------------------------------------------
+
+
+----------------------------------------------------------------------------------
