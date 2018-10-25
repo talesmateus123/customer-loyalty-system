@@ -12,12 +12,12 @@ INSERT INTO Cliente(login, senha, nome, pontos)
 VALUES('solange1971', '7119Solange', 'Solange Melo dos Santos', 0);
 ----------------------------------------------------------------------------------
 INSERT INTO ClienteCadastrado(Cliente_id, Vendedor_id)
-VALUES(0);
+VALUES(1,1);
 ----------------------------------------------------------------------------------
-INSERT INTO Produto(nome, tipo, descricao, preco, dataValidade)
-VALUES('Traduções Gold 5', 'Floral Aldeídico', 'Aroma moderado', 150, '2020-06-10'),
-('Traduções Gold 8', 'Floral Aldeídico', 'Aroma moderado', 145, '2020-06-10'),
-('Traduções Gold 9', 'Oriental Floral', 'Aroma intenso', 126.9, '2019-06-08');
+INSERT INTO Produto(id, nome, tipo, aroma, descricao, preco, dataValidade)
+VALUES(2305,'Traduções Gold 5', 'Floral Aldeídico', 'Aroma moderado', 'Chanel 5', 150, '2020-06-10'),
+(2308,'Traduções Gold 8', 'Floral Aldeídico', 'Aroma moderado', 'Dolce & Gabbana', 145, '2020-06-10'),
+(2309,'Traduções Gold 9', 'Oriental Floral', 'Aroma intenso', 'Gabriela Sabatini', 126.9, '2019-06-08');
 ----------------------------------------------------------------------------------
 
 

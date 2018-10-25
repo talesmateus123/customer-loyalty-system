@@ -24,4 +24,5 @@ public class ConexaoMySQL {
             throw new SQLException("Erro ao conectar com a base de dados: "+e.getMessage());
         }
     }
+    
 }

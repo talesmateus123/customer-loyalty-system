@@ -12,12 +12,7 @@ public class VendedorDAO {
     private static final String DELETE = "DELETE FROM Vendedor WHERE ID=?";
     private static final String LIST = "SELECT * FROM Vendedor ";
     private static final String LISTBYID = "SELECT * FROM Vendedor WHERE ID=?";
-    
-    public static void main(String[] args){
-        //inserir(new Vendedor("ireliaCarriesWU", "1234", "Main Irelia Pro Player",19, 5, 1972));
         
-    }
-    
     public static void inserir(Vendedor vendedor) {
         if (vendedor != null) {
             Connection conn = null;

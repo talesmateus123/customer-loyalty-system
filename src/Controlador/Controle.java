@@ -14,115 +14,151 @@ public class Controle {
         private LinkedList<Venda> vendas;
         private LinkedList<Produto> catalago;
         public Controle(){
-            admin = new Admin("talesmateus123", "21142307", "Tales Mateus de Oliveira Ferreira", 14, 06, 1999);
-            vendedores = new LinkedList();
-            vendas = new LinkedList();
+            this.admin = new Admin(1,"talesmateus123", "21142307", "Tales Mateus de Oliveira Ferreira", 14, 06, 1999);
+            this.vendedores = new LinkedList();
+            this.clientes = new LinkedList();
+            this.vendas = new LinkedList();
+            this.catalago = new LinkedList();
         }
-       // VENDEDORES
-        public void novoVendedor(Vendedor vendedor){
-            vendedores.add(vendedor);
-            vendedores.getLast().setId(vendedores.indexOf(vendedores.getLast()));
-        }        
-        public  Vendedor getVendedor(int id){
-            return vendedores.get(id);
-        }
-        public Vendedor getVendedor(String login){
-            for(int i=0; i<vendedores.size(); i++){
-                if (login.equals(vendedores.get(i).getLogin()))
-                    return vendedores.get(i);
-            }
-            return null;
+        // GETTERS
+        public LinkedList<Produto> getCatalago(){
+            return catalago;
         }
         public LinkedList<Vendedor> getVendedores(){
             return vendedores;
         }
-        public boolean removerVendedor(int id){
-            for(int i=0; i<vendedores.size(); i++){
-                if (id == vendedores.get(i).getId()){
-                    vendedores.remove(vendedores.get(i));
-                    return true;
-                }
-            }
-            return false;
-        }        
-        // CLIENTES
-        public void novoCliente(Vendedor vendedor, Cliente cliente){
-            vendedor.addCliente(cliente);
-            clientes.add(cliente);
-        }        
         public LinkedList<Cliente> getClientes(){
             return clientes;
         }
-        public static Cliente getCliente(Vendedor vendedor, int id){
-            return vendedor.buscarClientePorId(id);
-        }
-        public Cliente getCliente(Vendedor vendedor, String nome){
-            return vendedor.buscarClientePorNome(nome);
-        }
-        public Cliente getCliente(String nome){
-            for (int i=0; i< clientes.size(); i++){
-                if(nome.equals(clientes.get(i).getNome()))
-                    return clientes.get(i);
-            }
-            return null;
-        }
-        public boolean excluirCliente(Vendedor vendedor, int id){
-            clientes.remove(id);
-            return vendedor.removerCliente(id);
-        }
-        // VENDAS
-        public void novaVenda(Vendedor vendedor, Cliente cliente, Produto produto, int d, int m, int a){
-            vendas.add(new Venda(vendedor, cliente, produto, d, m, a));
-            vendas.getLast().setId(vendas.indexOf(vendas.getLast()));
-        }
         public LinkedList<Venda> getVendas(){
             return vendas;
-        }
-        public Venda getVenda(int id){
-                return vendas.get(id);
         }        
-        public boolean excluirVenda(int id){
-            if(vendas.get(id) == null)
-                return false;
-            vendas.remove(id);
-            return true;
+                
+        // MÉTODOS DE LISTA
+        // -----------------ESTÁ FALTANDO TRATAR AS EXCEÇÕES DOS MÉTODOS DE LISTA-----------------
+        public void adicionarVendedor(Vendedor vendedor){
+            this.vendedores.add(vendedor);
         }
-        public Venda buscarVendaPorId(int id){
-             for(int i=0; i<vendas.size(); i++){
-                if (id == vendas.get(i).getId())
-                    return vendas.get(i);
+        public void removerVendedor(int id){
+            for(int i=0; i<vendedores.size(); i++){
+                if(vendedores.get(i).getId() == id)
+                    this.vendedores.remove(vendedores.get(id));
+            }
+        }
+        public void removerVendedor(Vendedor vendedor){
+            if(vendedores.contains(vendedor))
+                this.vendedores.remove(vendedor);
+        }
+        public void limparVendedores(){
+            vendedores.clear();
+        }
+        public Vendedor buscarVendedorPorId(int id){
+            for(int i=0; i<vendedores.size(); i++){
+                if(vendedores.get(i).getId() == id)
+                    return this.vendedores.get(i);
             }
             return null;
-        }        
-        // CATALAGO
-        public  void addCatalago(Produto produto) {
-            catalago.add(produto);
         }
-        public boolean removeCatalago(int id) {
+        public Vendedor buscarVendedorPorNome(String nome){
+            for(int i=0; i<vendedores.size(); i++){
+                if(vendedores.get(i).getNome().equals(nome))
+                    return this.vendedores.get(i);
+            }
+            return null;
+        }   
+        public void adicionarCliente(Vendedor vendedor, Cliente cliente){
+            this.clientes.add(cliente);
+            vendedor.adicionarCliente(cliente);
+        }
+        public void removerCliente(Vendedor vendedor, int id){
+            for(int i=0; i<clientes.size(); i++){
+                if(clientes.get(i).getId() == id){
+                    this.clientes.remove(clientes.get(id));
+                    vendedor.removerCliente(id);
+                }
+            }
+        }
+        public void removerCliente(Vendedor vendedor, Cliente cliente){
+            if(clientes.contains(cliente)){
+                this.clientes.remove(cliente);
+                vendedor.removerCliente(cliente);
+            }
+        }
+        public void limparClientes(){
+            this.clientes.clear();
+            for(int i = 0; i< this.vendedores.size(); i++)
+                vendedores.get(i).limparClientes();
+        }
+        //testar
+        public void limparClientesPorVendedor(Vendedor vendedor){
+            this.clientes.removeAll(vendedor.getClientes());
+            vendedor.limparClientes();
+        }
+        public Cliente buscarClientePorId(int id){
+            for(int i=0; i<clientes.size(); i++){
+                if(clientes.get(i).getId() == id)
+                    return this.clientes.get(i);
+            }
+            return null;
+        }
+        public Cliente buscarClientePorNome(String nome){
+            for(int i=0; i<clientes.size(); i++){
+                if(clientes.get(i).getNome().equals(nome))
+                    return this.clientes.get(i);
+            }
+            return null;
+        }
+        public void novaVenda(Venda venda){
+            this.vendas.add(venda);
+        }
+        public void removerVenda(int id){
+            for(int i=0; i<vendas.size(); i++){
+                if(vendas.get(i).getId() == id)
+                    this.vendas.remove(vendas.get(id));
+            }
+        }
+        public void removerVenda(Venda venda){
+            if(vendas.contains(venda))
+                this.vendas.remove(venda);
+        }
+        public void limparVendas(){
+            vendas.clear();
+        }
+        public Venda buscarVendasPorId(int id){
+            for(int i=0; i<vendas.size(); i++){
+                if(vendas.get(i).getId() == id)
+                    return this.vendas.get(i);
+            }
+            return null;
+        }
+        public void adicionarAoCatalago(Produto produto){
+            this.catalago.add(produto);
+        }
+        public void removerDoCatalago(int id){
             for(int i=0; i<catalago.size(); i++){
-                    if (id == catalago.get(i).getId()){
-                        catalago.remove(catalago.get(i));
-                        return true;
-                    }
+                if(catalago.get(i).getId() == id)
+                    this.catalago.remove(catalago.get(id));
             }
-            return false;
         }
-        public LinkedList<Produto> getCatalago(){
-            return catalago;
+        public void removerDoCatalago(Produto produto){
+            if(catalago.contains(produto))
+                this.catalago.remove(produto);
         }
-        public Produto getItemCatalago(int id){
-            for(int i = 0; i < catalago.size(); i++){
-                if (id == catalago.get(id).getId())
-                    return catalago.get(id);
-            }
-            return null;
+        public void limparCatalago(){
+            catalago.clear();
         }
-        public Produto getItemCatalago(String nome){
-            for(int i = 0; i < catalago.size(); i++){
-                if (nome.equals(catalago.get(i).getNome()))
-                    return catalago.get(i);
+        public Produto buscarCatalagoPorId(int id){
+            for(int i=0; i<catalago.size(); i++){
+                if(catalago.get(i).getId() == id)
+                    return this.catalago.get(i);
             }
             return null;
         }
-        
+        public Produto buscarCatalagoPorNome(String nome){
+            for(int i=0; i<catalago.size(); i++){
+                if(catalago.get(i).getNome().equals(nome))
+                    return this.catalago.get(i);
+            }
+            return null;
+        }       
 }

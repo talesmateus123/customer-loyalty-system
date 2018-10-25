@@ -3,16 +3,20 @@
     TURMA: 1224
  */
 package Modelo;
+
+import java.util.LinkedList;
+
 public class Venda {
     private int id;
     private Vendedor vendedor;
     private Cliente cliente;
-    private Produto produto;
+    private LinkedList<Produto> produtos;
     private Data dataVenda;
-    public Venda(Vendedor usuario, Cliente cliente, Produto produto, int d, int m, int a){
+    public Venda(int id, Vendedor usuario, Cliente cliente, int d, int m, int a){
+        this.id = id;
         this.vendedor = usuario;
         this.cliente = cliente;
-        this.produto = produto;
+        this.produtos = new LinkedList<Produto>();
         this.dataVenda = new Data(d, m, a);
     }
     public int getId(){
@@ -24,8 +28,8 @@ public class Venda {
     public Cliente getCliente() {
         return cliente;
     }
-    public Produto getProduto() {
-        return produto;
+    public LinkedList<Produto> getProdutos() {
+        return produtos;
     }
     public Data getDataVenda() {
         return dataVenda;
@@ -39,14 +43,49 @@ public class Venda {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-    public void setProduto(Produto produto) {
-        this.produto = produto;
+    
+     public void adicionarProduto(Produto produto){
+        this.produtos.add(produto);
     }
+    public void removerProduto(int id){
+        for(int i=0; i<produtos.size(); i++){
+            if(produtos.get(i).getId() == id)
+                this.produtos.remove(produtos.get(id));
+        }
+    }
+    public void removerProduto(Produto produto){
+        if(produtos.contains(produto))
+            this.produtos.remove(produto);
+    }
+    public void limparProdutos(){
+        produtos.clear();
+    }
+    public Produto buscarProdutoPorId(int id){
+        for(int i=0; i<produtos.size(); i++){
+            if(produtos.get(i).getId() == id)
+                return this.produtos.get(i);
+        }
+        return null;
+    }
+    public Produto buscarProdutoPorNome(String nome){
+        for(int i=0; i<produtos.size(); i++){
+            if(produtos.get(i).getNome().equals(nome))
+                return this.produtos.get(i);
+        }
+        return null;
+    }
+    
     public void setDataVenda(int d, int m, int a) {
         this.dataVenda.setData(d, m, a);
     }
     public String toString() {
-        return "Venda id: " + id + "\nVendedor: " + vendedor.getNome() + "Cliente: " + cliente.getNome() + "Produto: " + produto.getNome() + "Data da venda: " + dataVenda.toString() + '}';
-    }
-    
+        String produtos = "";
+        for(int i = 0; i < this.produtos.size(); i++)
+            produtos = produtos + this.produtos.get(i).toString() +"\n";
+        
+        return "--------------------------------"+"Venda ID: " + id +"------------------------------------"+
+                 "\nVendedor: " + vendedor.getNome() + "\nCliente: " + cliente.getNome() +  "\nData da venda: " + dataVenda.toString() 
+                + "\nProdutos comprados:\n" + produtos
+                + "-------------------------------------------------------------------------------";
+    }    
 }

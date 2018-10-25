@@ -145,10 +145,10 @@ public class FormLogin extends javax.swing.JDialog {
 
     private void jBtnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnLoginActionPerformed
         if( jTxtFSenha.getText() != null && jTxtFLogin.getText() != null){
-            if(controle.getVendedor(jTxtFLogin.getText()) != null){
+            if(controle.buscarVendedorPorNome(jTxtFLogin.getText()) != null){
                 for(int i=0; i<controle.getVendedores().size(); i++){
-                    if (jTxtFSenha.getText().equals(controle.getVendedor(jTxtFLogin.getText()).getLogin())){
-                        this.vendedor = controle.getVendedor(jTxtFLogin.getText());
+                    if (jTxtFSenha.getText().equals(controle.buscarVendedorPorNome(jTxtFLogin.getText()).getLogin())){
+                        this.vendedor = controle.buscarVendedorPorNome(jTxtFLogin.getText());
                         interfacePrincipalUsuario = new InterfacePrincipalUsuario(controle, this.vendedor);
                         dispose();
                     }

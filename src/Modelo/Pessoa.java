@@ -9,7 +9,8 @@ public class Pessoa {
     protected Data dtNasc;
     protected String login;
     protected String senha;
-    public Pessoa(String login, String senha, String nome, int d, int m, int a) {
+    public Pessoa(int id, String login, String senha, String nome, int d, int m, int a) {
+        this.id = id;
         this.nome = nome;
         this.dtNasc = new Data(d, m, a);
         this.login = login;

@@ -194,7 +194,7 @@ public class FormNovoCliente extends javax.swing.JDialog {
     }
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
         if( jTxtFSenha.getText() != null && jTxtFLogin.getText() != null && jTxtFNome.getText() != null && jTxtFIdade.getText() != null && jTxtFDia.getText() != null && jTxtFMes.getText() != null && jTxtFAno.getText() != null){            
-            controle.getVendedor(this.vendedor.getId()).addCliente(cliente);            
+            controle.buscarVendedorPorId(this.vendedor.getId()).adicionarCliente(cliente);            
             dispose();               
         }
     }//GEN-LAST:event_jBtnConfirmarActionPerformed

@@ -138,7 +138,14 @@ public class Data {
             resultado = '0' + resultado;
             return resultado;
     }
-//completeToLeft("12938", '0', 15);
+    /*
+    public static String completeToLeft(String valor, char c, int tamanho) {
+            String resultado = valor;
+            while (resultado.length() < tamanho) 
+                    resultado = c + resultado;
+            return resultado;
+    }
+    */    
     
     public String toString() {
         if (this.validaData != null)

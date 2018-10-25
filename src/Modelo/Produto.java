@@ -10,11 +10,20 @@ public class Produto {
     private String nome;
     private String descricao;
     private String tipo;
-    public Produto(float preco, String nome, String descricao, String tipo, int d, int m, int a) {
-        this.preco = preco;
+    public Produto(int id, String nome, String descricao, String tipo, float preco, int d, int m, int a) {
+        this.id = id;
         this.nome = nome;
         this.descricao = descricao;
         this.tipo = tipo;
+        this.preco = preco;
+        this.dataValidade = new Data(d, m, a);
+    }
+    public Produto(int id, String nome, String tipo, float preco, int d, int m, int a) {
+        this.id = id;
+        this.nome = nome;
+        this.descricao = "Sem descrição";
+        this.tipo = tipo;
+        this.preco = preco;
         this.dataValidade = new Data(d, m, a);
     }
     public int getId() {
@@ -54,6 +63,6 @@ public class Produto {
         this.dataValidade.setData(d, m, a);
     }
     public String toString() {
-        return "Produto id: " + id + "\nNome: " + nome + "\nDescricao: " + descricao + "\nValor: " + preco + '.';
+        return " - Produto id: " + id + "; nome: " + nome + "; descricao: " + descricao + "; valor: " + preco;
     }    
 }

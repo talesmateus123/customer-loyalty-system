@@ -4,8 +4,8 @@
  */
 package InterfaceGrafica;
 import Modelo.Vendedor;
-public class FormNovoUsuario extends javax.swing.JDialog {
-    public FormNovoUsuario(java.awt.Frame parent, boolean modal) {
+public class FormNovoVendedor extends javax.swing.JDialog {
+    public FormNovoVendedor(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
          this.setTitle("Cadastrar usuário");
@@ -225,7 +225,7 @@ public class FormNovoUsuario extends javax.swing.JDialog {
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
         if( jTxtFSenha.getText() != null && jTxtFLogin.getText() != null && jTxtFAno.getText() != null && jTxtFDia.getText() != null && jTxtFIdade.getText() != null && jTxtFMes.getText() != null && jTxtFNome.getText() != null )
-            this.vendedor = new Vendedor(jTxtFLogin.getText(), jTxtFSenha.getText(),  jTxtFNome.getText(), Integer.parseInt(jTxtFDia.getText()), Integer.parseInt(jTxtFMes.getText()), Integer.parseInt(jTxtFAno.getText()));
+            this.vendedor = new Vendedor(1,jTxtFLogin.getText(), jTxtFSenha.getText(),  jTxtFNome.getText(), Integer.parseInt(jTxtFDia.getText()), Integer.parseInt(jTxtFMes.getText()), Integer.parseInt(jTxtFAno.getText()));
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
     private Vendedor vendedor;
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -121,7 +121,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         });
     }
     private Controle controle;
-    private FormNovoUsuario formNovoUsuario;
+    private FormNovoVendedor formNovoUsuario;
     private InterfacePrincipalUsuario interfacePrincipalUsuario;
     //private InterfacePrincipalCliente interfacePrincipalCliente;
     //private InterfacePrincipalAdmin interfacePrincipalAdmin;    
