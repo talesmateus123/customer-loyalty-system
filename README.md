@@ -1,24 +1,24 @@
 -------------------------------------------------------------
-INFORMAÇÕES DO PROJETO
+PROJECT INFORMATION
 
-ALUNO: Tales Mateus de Oliveira Ferreira
-TURMA: 1224
+STUDENT: Tales Mateus de Oliveira Ferreira
+CLASS: 1224
 -------------------------------------------------------------
-TÍTULO: Sistema de fidelização de clientes
+TITLE: Customer loyalty system
 
 -------------------------------------------------------------
-DESCRIÇÃO:
+DESCRIPTION:
 
-O trabalho consiste na criação de uma ferramenta logistica 
-para auxílio na relação vendedor-comprador, não é voltada 
-para o ramo empresarial, pois seu foco é o usuário autônomo,
-revendedor de produtos, de qualquer marca.
+The job consists of creating a logistical tool
+for assistance in the seller-buyer relationship, is not aimed at
+for the business sector, as its focus is the autonomous user,
+reseller of products, of any brand.
 
-O foco do trabalho é gerenciar o estoque do Vendedor, suas 
-finanças mensais, e ainda armazenar dados de compras de seus
-clientes, proporcionando um acúmulo de pontos para o devido 
-cliente. A ideia é que, de acordo com as compras feitas 
-pelo cliente, vá gerando um acúmulo de pontos, esses, por 
-sua vez, poderão ser substituídos por produtos a escolha do 
-cliente, ou por meio de sorteios.
+The focus of the job is to manage the Seller's inventory, its
+monthly finances, and also store purchase data for your
+customers, providing an accumulation of points for the due
+client. The idea is that, according to the purchases made
+by the client, will generate an accumulation of points, these, for
+turn, can be replaced by products of the choice of
+customer, or through sweepstakes.
 -------------------------------------------------------------
