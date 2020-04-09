@@ -1,11 +1,7 @@
 -------------------------------------------------------------
 PROJECT INFORMATION
-
-STUDENT: Tales Mateus de Oliveira Ferreira
-CLASS: 1224
 -------------------------------------------------------------
 TITLE: Customer loyalty system
-
 -------------------------------------------------------------
 DESCRIPTION:
 
@@ -21,4 +17,3 @@ client. The idea is that, according to the purchases made
 by the client, will generate an accumulation of points, these, for
 turn, can be replaced by products of the choice of
 customer, or through sweepstakes.
--------------------------------------------------------------
